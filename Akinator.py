@@ -23,11 +23,25 @@ class JogoAdivinhacaoCarros:
         print(f"Eu acho que o carro que você pensou é: {carro_adivinhado}")
 
     def adivinhar_carro(self):
+
+        perguntas_realizadas = []
+        perguntas_realizadas_nao = []
+
         for carro in self.carros:
             respostas = []
             for pergunta in self.mapa_solucoes[carro]:
-                resposta = input(pergunta + " ").lower()
-                respostas.append(resposta)
+                if pergunta not in perguntas_realizadas:
+                    resposta = input(pergunta + " ").lower()
+                    respostas.append(resposta)
+                    perguntas_realizadas.append(pergunta)
+                    print(perguntas_realizadas)
+                    
+                    #Se resposta for igual a nao, irá adicionar no array perguntas_realizadas_nao
+                    #isto foi feito, pois repostas "nao" impede que a marca do carro seja encontrada, se fosse resposta sim, nao iria fazer sentido 
+                    if resposta != "sim":
+                        perguntas_realizadas_nao.append(pergunta)
+                    if pergunta in perguntas_realizadas_nao:
+                        respostas.append("nao")
 
             if all(resposta == 'sim' for resposta in respostas):
                 return carro
