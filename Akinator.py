@@ -34,15 +34,15 @@ class JogoAdivinhacaoCarros:
                     resposta = input(pergunta + " ").lower()
                     respostas.append(resposta)
                     perguntas_realizadas.append(pergunta)
-                    print(perguntas_realizadas)
-                    
+
                     #Se resposta for igual a nao, irá adicionar no array perguntas_realizadas_nao
                     #isto foi feito, pois repostas "nao" impede que a marca do carro seja encontrada, se fosse resposta sim, nao iria fazer sentido 
+                    
                     if resposta != "sim":
                         perguntas_realizadas_nao.append(pergunta)
-                    if pergunta in perguntas_realizadas_nao:
-                        respostas.append("nao")
-
+                if pergunta in perguntas_realizadas_nao:
+                    respostas.append("nao")
+    
             if all(resposta == 'sim' for resposta in respostas):
                 return carro
 
