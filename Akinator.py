@@ -2,7 +2,6 @@ import json
 
 class JogoAdivinhacaoCarros:
     def __init__(self):
-        #self.carros = ['Civic', 'Corolla', 'Gol', 'Fusca', 'Mustang', 'BMW','Toyota' ,'Ford' ,'Mercedes-Benz' ,'Chevrolet']
         
         with open('perguntas.json', 'r', encoding='utf-8') as arquivo:
             self.mapa_solucoes = json.load(arquivo)
@@ -11,7 +10,7 @@ class JogoAdivinhacaoCarros:
         self.carros = list(self.mapa_solucoes.keys())
 
     def jogar(self):
-        #print(f"\n\n------------------------------- LISTA DE CARROS ------------------------------- \n\n Civic, Corolla, Gol, Fusca, Mustang, BMW, Toyota, Ford, Mercedes-Benz, Chevrolet\n")
+
         print(f"\n\n------------------------------- LISTA DE CARROS ------------------------------- \n\n{', '.join(self.carros)}\n")
         print("Bem-vindo ao Jogo de Adivinhacao de Carros!")
         print("Pense em um carro da lista e responda com 'sim' ou 'nao'.\n")
@@ -43,10 +42,10 @@ class JogoAdivinhacaoCarros:
                         break # Este break serve para que nao seja realizado mais perguntas do carro, pois como a resposta foi nao, 
                               # nao há necessídade de realizar as perguntas do carro
                     
+                # se apargunta estiver no array perguntas_realizadas_nao, atribui em repostas a string nao 
                 if pergunta in perguntas_realizadas_nao:
                     respostas.append("nao")
 
-            # se apargunta estiver no array perguntas_realizadas_nao, atribui em repostas a string nao 
             if all(resposta == 'sim' for resposta in respostas):
                 return carro
         return  0
